@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="../static/main.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class = "main wrapper">
+            <div class= "homie">
+                <form action="/back" method="POST">
+                    <button type="submit">log out</button>
+                </form>
+            </div>
+            <div class = "navbar">
+                <div class = "dropdown">
+                    <a href = "{{url_for('news_disease')}}">Disease Search</a>
+                </div>
+                <div class = "dropdown">
+                    <a href = "{{url_for('news_icd10')}}">ICD10 Search</a>
+                </div>
+                <div class = "dropdown">
+                    <a href = "{{url_for('news_ndc')}}">NDC Search</a>
+                </div>
+            </div>
+
+            <div class = "news">  
+                <!-- (A) SEARCH FORM -->
+                <form action = "{{url_for('news_disease')}}" method = "POST">
+                    <label for = "site-search"> Enter the name of disease </label>
+                    <input type = 'search' name = 'disease' placeholder = "fever">
+                    <button> Go </button>
+                </form>
+
+                <!-- (B) OUTPUT SEARCH RESULTS -->
+                {% if result  | length != 0%}
+                    <p> There are {{articles | safe}} articles against your searched keyword. </p>
+                    <p> {{result | safe}} </p>
+
+                {% else %}
+                    <div id="demo">No search results.</div>
+                {% endif %}
+            </div>
+        </div>
+    </body>
+</html>

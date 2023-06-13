@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="../static/main.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class = "head">
+            <h1>CureMD Newsletter</h1>
+        </div>
+
+        <div class = "navbar">
+
+            <div class = "dropdown">
+                <button class="dropbtn">Subscription Plans
+                    <i class="fa fa-caret-down"></i>
+                </button>
+            </div>
+        </div>
+        <p></p>
+        <div class = "Login">
+            <h1>Login</h1>
+            <form action="{{url_for('home')}}" style="border:1px solid #ccc" method="POST">
+                <h3>Please enter your credentials.</h3>
+                <hr>
+                
+                <label>Username : </label>   
+                <input type="text" placeholder="Enter Username" name="username" required>  
+                <p></p>
+                <label>Password : </label>   
+                <input type="password" placeholder="Enter Password" name="password" required>  
+                <p></p>
+                <button style = 'background-color: rgb(43, 43, 43);' type="submit">Login</button>
+            </form>
+            {% if error %}
+                <p>{{error | safe}}</p>
+            {% endif %}
+
+            <form action = "{{url_for('sign_up')}}">
+                <button type = "submit">Subscribe Today</button>
+            </form>
+            
+        </div>
+
+    </body>
+</html>
